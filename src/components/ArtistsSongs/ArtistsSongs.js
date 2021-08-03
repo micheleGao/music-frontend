@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Container } from "react-bootstrap";
 import ReactPlayer from "react-player";
+import Searchbar from "../Searchbar/Searchbar";
+import { Link } from "react-router-dom";
 
 
-export default function ArtistsSongs() {
-	const [songs, setSong] = useState({});
+export default function ArtistsSongs({ handleChange, handleSearch, search, artist, showFilteredSongs, filteredSongs }) {
+	const [songs, setSong] = useState([]);
 	const { id } = useParams()
 	const getSongDetail = async () => {
 		try {
@@ -23,12 +25,14 @@ export default function ArtistsSongs() {
 		getSongDetail();
 	}, []);
 
-	console.log(songs.length)
+	// console.log(songs.length)
+	console.log(songs)
 
 	return (
 		<div>
+			<Searchbar handleChange={handleChange} searchString={search} showFilteredSongs={showFilteredSongs} filteredSongs={filteredSongs} handleSearch={handleSearch} songs={songs} />
 			<Container>
-				{!songs.length && <p>No songs just yet</p>}
+				{/* {!songs.length && <p>No songs just yet</p>}
 				{songs.length > 0 &&
 					songs.map((song) => {
 
@@ -46,14 +50,39 @@ export default function ArtistsSongs() {
 							</Container>
 
 						);
-					})}
+					})} */}
+
+				{!showFilteredSongs 
+					? songs && songs.map((song, index) => {
+						return (
+							<div className="TP" key={index}>
+
+								<Link to={`/artists/${song.artist_id}`}> 
+									<div className="songs">
+										<h1>{song.title}</h1>
+									</div>
+								</Link>
+							</div>
+						)
+					})
+					: filteredSongs.map((song, index) => {
+                        return (
+							<div className="TP" key={index}>
+
+								<Link to={`/songs/${song.artist_id}`}>
+									<div className="song">
+										<h2>{song.title}</h2>
+									</div>
+
+								</Link>
+
+							</div>
+						)
+                    })
+
+				}
 			</Container>
-			{/* <h1>songs</h1>
-				<small>{songs.title}</small>
-				<small>{songs.album}</small>
-				<small>{songs.play_url}</small>
-				<small>{songs.artist}</small> */}
 
 		</div>
-	)
-}
+	);
+};

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Image, Button } from 'react-bootstrap';
-import Artists from '../Artists/Artists';
+import { Container, Image, Button, Card, InputGroup, Dropdown, DropdownButton } from 'react-bootstrap';
 import ReactPlayer from "react-player";
+import EditReview from '../EditReview/EditReview';
+import WriteReview from '../WriteReview/WriteReview';
 
-export default function ArtistsDetails({ userInfo, loggedIn }) {
+export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _updateReviews}) {
 	const [artists, setArtists] = useState(null);
 	const { id } = useParams()
 	const getArtistsDetail = async () => {
@@ -26,24 +27,57 @@ export default function ArtistsDetails({ userInfo, loggedIn }) {
 	if (!artists) {
 		return null;
 	}
-	console.log(artists.songs.length)
-	// console.log(artists.reviews)
 
 	return (
 		<Container className='p-5 border rounded-3 bg-light'>
 			<div className='d-flex justify-content-between'>
 				<h2>{artists.name}</h2>
 				<small>{artists.nationality}</small>
-				<p>{artists.reviews}</p>
 			</div>
 			<Image
-				rounded
-				fluid
+				// rounded
+				// fluid
 				src={artists.photo_url}
+				roundedCircle
+				width="250px"
+				height="286px"
 			/>
-			
+			<h2>Reviews</h2>
+			<WriteReview _updateReviews={_updateReviews}  _handleChange={_handleChange}/>
+			{!artists.reviews.length && <p>No reviews just yet</p>}
+			{loggedIn && <p>Write a review</p>}
+			{artists.reviews.length > 0 &&
+				artists.reviews.map((review) => {
+					return (
+						<Container
+							className='p-5 border rounded-3 bg-light'
+							key={review.id}>
+							<h1>{review.title}</h1>
+							<small>{review.body}</small>
+							{/* <div>
+								<Button variant='secondary'>Edit</Button>
+								<Button variant='danger'>Delete</Button>
+							</div> */}
+							<EditReview _handleChange={_handleChange} _updateReviews={_updateReviews}/>
+							{/* <InputGroup className="mb-3">
+								<DropdownButton
+									variant="outline-secondary"
+									title="Dropdown"
+									id="input-group-dropdown-1"
+								>
+									<Dropdown.Item href={`/reviews/${id}/edit`}>Edit Review</Dropdown.Item>
+									<Dropdown.Item href={`/reviews/${id}/edit`}>Delete the review</Dropdown.Item>
+								</DropdownButton>
+	
+							</InputGroup> */}
+
+						</Container>
+
+					);
+				})}
+
 			<h2>Songs</h2>
-				{!artists.songs.length && <p>No songs just yet</p>}
+			{!artists.songs.length && <p>No songs just yet</p>}
 			{artists.songs.length > 0 &&
 				artists.songs.map((song) => {
 					return (
@@ -52,13 +86,18 @@ export default function ArtistsDetails({ userInfo, loggedIn }) {
 							key={song.id}>
 							<h1>{song.title}</h1>
 							<small>{song.album}</small>
-							<ReactPlayer
-								url={song.play_url}
-							/>
+							<Container className="player-wrapper">
+								<ReactPlayer
+									className="react-player"
+									width='19rem'
+									height='13rem'
+									url={song.play_url}
+								/>
+							</Container>
 						</Container>
-					
+
 					);
-				})} 
+				})}
 		</Container>
 	)
 }

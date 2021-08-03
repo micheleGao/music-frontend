@@ -35,9 +35,7 @@ export default function ArtistsReviews(){
                                     <h1>{review.title}</h1>
                                     <p>{review.body}</p>
                                     <small>{review.created}</small>
-                                    <div>
-									
-								</div>
+                                    
                                 </Container>
                             );
                         })}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, CardGroup, Button } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 
 export default function Artists({ userInfo, loggedIn }) {
     const [artists, setArtists] = useState([]);
@@ -40,10 +41,13 @@ export default function Artists({ userInfo, loggedIn }) {
 									to={`artists/${artist.id}`}
 									style={{ color: 'black', textDecoration: 'none' }}>
 									<Card>
-										<Card.Img
+										{/* <Card.Img
 											variant='top'
 											src={artist.photo_url}
-										/>
+                                            roundedCircle
+										/> */}
+                                        <Image src={artist.photo_url} width="130px" height="160px" roundedCircle />
+
 										<Card.Body>
 											<Card.Title>
                                                 {artist.name}
