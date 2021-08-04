@@ -28,7 +28,7 @@ export default function Artists({ userInfo, loggedIn }) {
     if (artists.length <= 0) {
         return "loading..."
     }
-
+    
     return (
         <Container>
             <h1>Artists</h1>

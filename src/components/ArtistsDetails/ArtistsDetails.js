@@ -4,9 +4,14 @@ import { Container, Image } from 'react-bootstrap';
 import ReactPlayer from "react-player";
 import EditReview from '../EditReview/EditReview';
 import WriteReview from '../WriteReview/WriteReview';
-import Carousel from 'react-bootstrap/Carousel'
+import Offcanvas from 'react-bootstrap/Offcanvas'
+import { Button } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion'
 
 export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _updateReviews, _handleDelete }) {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 	const [artists, setArtists] = useState(null);
 	const { id } = useParams()
 	const getArtistsDetail = async () => {
@@ -43,64 +48,99 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 				width="250px"
 				height="286px"
 			/>
-			<h2>Reviews</h2>
-			<WriteReview _updateReviews={_updateReviews} _handleChange={_handleChange} getArtistsDetail={getArtistsDetail} />
-			{!artists.reviews.length && <p>No reviews just yet</p>}
-			{loggedIn && <p></p>}
-			{artists.reviews.length > 0 &&
-				artists.reviews.map((review) => {
-					return (
-						<Container
-							className='p-5 border rounded-3 bg-light'
-							key={review.id}>
-							<h1>{review.title}</h1>
-							<small>{review.body}</small>
-							<EditReview _handleChange={_handleChange} reviewId={review.id} _updateReviews={_updateReviews} getArtistsDetail={getArtistsDetail} _handleDelete={_handleDelete} />
-						</Container>
+			<Accordion  className="accordion" defaultActiveKey="0">
+				<Accordion.Item eventKey="0">
+					<Accordion.Header>Reviews</Accordion.Header>
+					<Accordion.Body>
+						<WriteReview _updateReviews={_updateReviews} _handleChange={_handleChange} getArtistsDetail={getArtistsDetail} />
+						{!artists.reviews.length && <p>No reviews just yet</p>}
+						{loggedIn && <p></p>}
+						{artists.reviews.length > 0 &&
+							artists.reviews.map((review) => {
+								return (
+									<Container
+										className='p-5 border rounded-3 bg-light'
+										key={review.id}>
+										<h1>{review.title}</h1>
+										<small>{review.body}</small>
+										<EditReview _handleChange={_handleChange} reviewId={review.id} _updateReviews={_updateReviews} getArtistsDetail={getArtistsDetail} _handleDelete={_handleDelete} />
+									</Container>
 
-					);
-				})}
+								);
+							})}
 
-			<h2>Songs</h2>
-			{!artists.songs.length && <p>No songs just yet</p>}
-			{artists.songs.length > 0 &&
-				artists.songs.map((song) => {
-					return (
-						<Container
-							className='p-5 border rounded-3 bg-light'
-							key={song.id}>
-							<h1>{song.title}</h1>
-							<small>{song.album}</small>
-							<Container className="player-wrapper">
-								<ReactPlayer
-									className="react-player"
-									width='19rem'
-									height='13rem'
-									url={song.play_url}
-								/>
-							</Container>
-						</Container>
+					</Accordion.Body>
+				</Accordion.Item>
+			</Accordion>
+			{/* <Container>
+				<>
+					<Button className="press-me" variant="primary" onClick={handleShow}>
+						Reviews
+					</Button>
 
-						// <Carousel variant="dark"
-						// 	className='p-5 border rounded-3 bg-light'
-						// 	key={song.id}>
-						// 		<Carousel.Item>
-						// 			<div className="player-wrapper">
-						// 				<ReactPlayer
-						// 						className="react-player"
-						// 						width='19rem'
-						// 						height='13rem'
-						// 						url={song.play_url}
-						// 				/>
-						// 			</div>
-						// 			<Carousel.Caption>
-						// 				<h2>{song.title}</h2>
-						// 				<h5>{song.album}</h5>
-						// 			</Carousel.Caption>
-						// 		</Carousel.Item>
-						// </Carousel>
-					);
-				})}
+					<Offcanvas show={show} onHide={handleClose}>
+						<Offcanvas.Header closeButton>
+							<Offcanvas.Title>Reviews</Offcanvas.Title>
+						</Offcanvas.Header>
+						<Offcanvas.Body>
+							<WriteReview _updateReviews={_updateReviews} _handleChange={_handleChange} getArtistsDetail={getArtistsDetail} />
+							{!artists.reviews.length && <p>No reviews just yet</p>}
+							{loggedIn && <p></p>}
+							{artists.reviews.length > 0 &&
+								artists.reviews.map((review) => {
+									return (
+										<Container
+											className='p-5 border rounded-3 bg-light'
+											key={review.id}>
+											<h1>{review.title}</h1>
+											<small>{review.body}</small>
+											<EditReview _handleChange={_handleChange} reviewId={review.id} _updateReviews={_updateReviews} getArtistsDetail={getArtistsDetail} _handleDelete={_handleDelete} />
+										</Container>
+
+									);
+								})}
+
+						</Offcanvas.Body>
+					</Offcanvas>
+				</>
+			</Container> */}
+			<Container>
+				<>
+					<Button className="press-me" variant="primary" onClick={handleShow}>
+						Songs
+					</Button>
+
+					<Offcanvas show={show} onHide={handleClose}>
+						<Offcanvas.Header closeButton>
+							<Offcanvas.Title>Songs</Offcanvas.Title>
+						</Offcanvas.Header>
+						<Offcanvas.Body>
+							<h2>Songs</h2>
+							{!artists.songs.length && <p>No songs just yet</p>}
+							{artists.songs.length > 0 &&
+								artists.songs.map((song) => {
+									return (
+										<Container className="song-content"
+											className='p-2 border rounded-2 bg-light'
+											key={song.id}>
+											<h1>{song.title}</h1>
+											<small>{song.album}</small>
+											<Container className="player-wrapper">
+												<ReactPlayer
+													className="react-player"
+													width='19rem'
+													height='13rem'
+													url={song.play_url}
+												/>
+											</Container>
+										</Container>
+									);
+								})}
+
+						</Offcanvas.Body>
+					</Offcanvas>
+				</>
+			</Container>
 		</Container>
 	)
 }

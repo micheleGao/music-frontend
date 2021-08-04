@@ -1,7 +1,9 @@
 import { useState } from 'react';
-export default function Searchbar({ songs }) {
-    // const [songs, setSong] = useState({});
-    const [search, setSearch] = useState('');
+import ReactPlayer from 'react-player';
+import{Link} from 'react-router-dom';
+export default function Searchbar({ artists, songs }) {
+
+    const [search, setSearch] = useState("");
     const [filteredSong, setFilteredSong] = useState(songs);
     const [showFilteredSong, setShowFilteredSong] = useState(false)
     
@@ -14,18 +16,52 @@ export default function Searchbar({ songs }) {
     }
     const handleSearch = (e) => {
         e.preventDefault();
-        setFilteredSong(true);
-        setShowFilteredSong(songs.filter(song => {
+        setShowFilteredSong(true);
+        setFilteredSong(songs.filter(song => {
             return song.title.toLowerCase().includes(search.toLowerCase())
         }))
         console.log('hey from the handle search')
-        setSearch('')
+        setSearch("")
     }
     return (
         <div>
             <form onSubmit={handleSearch}>
-                <input type="text" id="search" placeholder="Search" className="search" value={search} onChange={handleChange} />
+                <input type="text" id="search" placeholder="Search For A Song" className="search" value={search} onChange={handleChange} />
             </form>
+            {!showFilteredSong
+					? songs && songs.map((song, index) => {
+						return (
+							<div className="TP" key={index}>
+
+								<Link to={`/artists/${song.artist_id}`}> 
+									<div className="songs">
+										<h1>{song.title}</h1>
+										<ReactPlayer
+										width="100px"
+										height="100px"
+										url={song.play_url}
+										/>
+									</div>
+								</Link>
+							</div>
+						)
+					})
+					: filteredSong.map((song, index) => {
+                        return (
+							<div className="TP" key={index}>
+
+								<Link to={`/artists/${song.artist_id}`}>
+									<div className="song">
+										<h2>{song.title}</h2>
+									</div>
+
+								</Link>
+
+							</div>
+						)
+                    })
+
+				}
         </div>
 
 

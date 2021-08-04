@@ -6,7 +6,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import { Link } from "react-router-dom";
 
 
-export default function ArtistsSongs({ handleChange, handleSearch, search, artist, showFilteredSongs, filteredSongs }) {
+export default function ArtistsSongs({ handleChange, handleSearch, search, showFilteredSong, filteredSong }) {
 	const [songs, setSong] = useState([]);
 	const { id } = useParams()
 	const getSongDetail = async () => {
@@ -25,13 +25,13 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 		getSongDetail();
 	}, []);
 
-	// console.log(songs.length)
-	console.log(songs)
+	// let musics = Object.keys(songs).sort(function(a, b){return songs[a]-songs[b];});
+	// console.log(musics)
 
 	return (
 		<div>
-			<Searchbar handleChange={handleChange} searchString={search} showFilteredSongs={showFilteredSongs} filteredSongs={filteredSongs} handleSearch={handleSearch} songs={songs} />
-			<Container>
+			<Searchbar handleChange={handleChange} searchString={search} showFilteredSong={showFilteredSong} filteredSong={filteredSong} handleSearch={handleSearch} songs={songs} />
+			{/* <Container> */}
 				{/* {!songs.length && <p>No songs just yet</p>}
 				{songs.length > 0 &&
 					songs.map((song) => {
@@ -50,9 +50,9 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 							</Container>
 
 						);
-					})} */}
+					})}  */}
 
-				{!showFilteredSongs 
+				 {/* {!showFilteredSong 
 					? songs && songs.map((song, index) => {
 						return (
 							<div className="TP" key={index}>
@@ -60,12 +60,17 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 								<Link to={`/artists/${song.artist_id}`}> 
 									<div className="songs">
 										<h1>{song.title}</h1>
+										<ReactPlayer
+										width="100px"
+										height="100px"
+										url={song.play_url}
+										/>
 									</div>
 								</Link>
 							</div>
 						)
 					})
-					: filteredSongs.map((song, index) => {
+					: filteredSong.map((song, index) => {
                         return (
 							<div className="TP" key={index}>
 
@@ -81,7 +86,10 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
                     })
 
 				}
-			</Container>
+			</Container> */}
+
+			{/* </Container> */}
+
 
 		</div>
 	);

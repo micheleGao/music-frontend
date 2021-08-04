@@ -20,11 +20,7 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
         artist_id: `${id}`
     }
     const [values, setValues]=useState(initialFormState)
-    // const [values, setValues] = useState({
-    //     title: '',
-    //     body: '',
-    //     id:`${id}`
-    // })
+
     const _handleChange = (e) => {
         setValues((prevState) => {
             return {
@@ -92,7 +88,7 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className="edit-review"variant="primary" onClick={handleShow}>
             Edit review
             </Button>
             <Modal

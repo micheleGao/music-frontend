@@ -1,46 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'PT Mono', monospace, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+  font-family: 'PT Mono', monospace, sans-serif !important;
+ 
 }
 
-.react-player {
-  position: absolute;
+ .player-wrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+} 
+
+/* .react-player {
+  position: relative;
   top: 0;
   left: 0;
   align-content: center;
+} */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes move {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
   0%   {background-color:red; left:0px; top:0px;}
   25%  {background-color:yellow; left:20px; top:0px;}
   50%  {background-color:blue; left:20px; top:20px;}
   75%  {background-color:green; left:0px; top:20px;}
   100% {background-color:red; left:0px; top:0px;}
 }
-@keyframes logo {
-  0%   {background-color:red; left:0px; top:0px;}
-  25%  {background-color:yellow; left:40px; top:0px;}
-  50%  {background-color:blue; left:40px; top:40px;}
-  75%  {background-color:green; left:0px; top:40px;}
-  100% {background-color:red; left:0px; top:0px;}
-}
+
 .logo-monster{
   position: relative;
   background-color: red;
-  animation-name: logo;
+  animation-name: spin;
   animation-duration: 4s;
 }
 
@@ -59,6 +69,25 @@ img {
 }
 
 .artist-home:hover{
-  width: 100%;
-  height:100%;
+  width: 75%;
+  height:75%;
+  background-color: aqua;
+}
+.press-me,
+.accordion{
+  margin-top:1rem;
+  margin-bottom:1rem;
+}
+.edit-review{
+  margin-left: 7rem;
+}
+
+.song-content{
+ justify-content: center;
+ align-self: auto;
+}
+.react-player{
+  align-items: center;
+  margin-top: 0rem;
+  margin-bottom:10rem;
 }
