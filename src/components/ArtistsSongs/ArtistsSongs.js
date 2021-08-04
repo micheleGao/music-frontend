@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import Searchbar from "../Searchbar/Searchbar";
@@ -32,7 +32,7 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 		<div>
 			<Searchbar handleChange={handleChange} searchString={search} showFilteredSongs={showFilteredSongs} filteredSongs={filteredSongs} handleSearch={handleSearch} songs={songs} />
 			<Container>
-				{/* {!songs.length && <p>No songs just yet</p>}
+				{!songs.length && <p>No songs just yet</p>}
 				{songs.length > 0 &&
 					songs.map((song) => {
 
@@ -50,9 +50,9 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 							</Container>
 
 						);
-					})} */}
+					})}
 
-				{!showFilteredSongs 
+				{/* {!showFilteredSongs 
 					? songs && songs.map((song, index) => {
 						return (
 							<div className="TP" key={index}>
@@ -80,7 +80,7 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, artis
 						)
                     })
 
-				}
+				} */}
 			</Container>
 
 		</div>

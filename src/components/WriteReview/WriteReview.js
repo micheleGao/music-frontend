@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap';
 
 
-export default function WriteReview({getArtistDetails}){
+export default function WriteReview({getArtistsDetail}){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -14,7 +14,7 @@ export default function WriteReview({getArtistDetails}){
     const initialFormValues={
         title: "",
         body: "",
-        id:`${id}`     
+        artist_id:`${id}`     
     }
     const [values, setValues] = useState(initialFormValues);
     const _handleChange = (e) => {
@@ -29,16 +29,17 @@ export default function WriteReview({getArtistDetails}){
     const _createReview = async (e) => {
 		e.preventDefault();
 		console.log('you submitted a review!!!!');
-		const API_ENDPOINT = `http://localhost:8000/artists/${id}`;
+		const API_ENDPOINT = `http://localhost:8000/reviews/`;
 		const response = await fetch(API_ENDPOINT, {
 			method: 'POST',
 			body: JSON.stringify(values),
 			headers: {
+                Authorization:`Token ${localStorage.getItem('token')}`,
 				'Content-Type': 'application/json',
 			},
 		});
 		if (response.status === 201) {
-            getArtistDetails();
+            getArtistsDetail();
 			console.log(response);
             setValues(initialFormValues)
 		}
@@ -48,17 +49,16 @@ export default function WriteReview({getArtistDetails}){
     return(
         <>
             <Button variant="primary" onClick={handleShow}>
-            Edit review
+            Write Review
             </Button>
             <Modal
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-                onSubmit={_createReview}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Review</Modal.Title>
+                    <Modal.Title>Write review</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={_createReview}>
@@ -68,7 +68,9 @@ export default function WriteReview({getArtistDetails}){
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="body">
                             <Form.Label>Your review:</Form.Label>
-                            <Form.Control type="text" placeholder="title"value={values.body}onChange={(e)=>_handleChange(e)}required as="textarea" rows={4} />
+                            <Form.Control type="text" placeholder="title"value={values.body}onChange={(e)=>_handleChange(e)}
+                                required as="textarea" rows={4} />
+                            <Button type='submit'>Post</Button>
                         </Form.Group>
                     </Form>
 
@@ -77,7 +79,6 @@ export default function WriteReview({getArtistDetails}){
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button type='submit'>Post</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Image, Button, Card, InputGroup, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import ReactPlayer from "react-player";
 import EditReview from '../EditReview/EditReview';
 import WriteReview from '../WriteReview/WriteReview';
 
-export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _updateReviews}) {
+export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _updateReviews, _handleDelete}) {
 	const [artists, setArtists] = useState(null);
 	const { id } = useParams()
 	const getArtistsDetail = async () => {
@@ -43,7 +43,7 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 				height="286px"
 			/>
 			<h2>Reviews</h2>
-			<WriteReview _updateReviews={_updateReviews}  _handleChange={_handleChange}/>
+			<WriteReview _updateReviews={_updateReviews}  _handleChange={_handleChange} getArtistsDetail={getArtistsDetail}/>
 			{!artists.reviews.length && <p>No reviews just yet</p>}
 			{loggedIn && <p>Write a review</p>}
 			{artists.reviews.length > 0 &&
@@ -54,23 +54,7 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 							key={review.id}>
 							<h1>{review.title}</h1>
 							<small>{review.body}</small>
-							{/* <div>
-								<Button variant='secondary'>Edit</Button>
-								<Button variant='danger'>Delete</Button>
-							</div> */}
-							<EditReview _handleChange={_handleChange} _updateReviews={_updateReviews}/>
-							{/* <InputGroup className="mb-3">
-								<DropdownButton
-									variant="outline-secondary"
-									title="Dropdown"
-									id="input-group-dropdown-1"
-								>
-									<Dropdown.Item href={`/reviews/${id}/edit`}>Edit Review</Dropdown.Item>
-									<Dropdown.Item href={`/reviews/${id}/edit`}>Delete the review</Dropdown.Item>
-								</DropdownButton>
-	
-							</InputGroup> */}
-
+							<EditReview _handleChange={_handleChange} reviewId={review.id} _updateReviews={_updateReviews}getArtistsDetail={getArtistsDetail} _handleDelete={_handleDelete}/>
 						</Container>
 
 					);

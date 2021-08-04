@@ -44,7 +44,6 @@ export default function Artists({ userInfo, loggedIn }) {
 										{/* <Card.Img
 											variant='top'
 											src={artist.photo_url}
-                                            roundedCircle
 										/> */}
                                         <Image src={artist.photo_url} width="130px" height="160px" roundedCircle />
 

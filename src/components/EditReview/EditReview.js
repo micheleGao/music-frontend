@@ -5,19 +5,19 @@ import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap';
 
 
-export default function EditReview({artists, setArtists, getArtistDetails}) {
+export default function EditReview({artists, setArtists, getArtistsDetail, reviewId}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const history = useHistory();
     const { id } = useParams();
     
-    const API_ENDPOINT = `http://localhost:8000/reviews/${id}`;
+    const API_ENDPOINT = `http://localhost:8000/reviews/${reviewId}`;
 
     const initialFormState = {
         title: "",
         body: "",
-        id: `${id}`
+        artist_id: `${id}`
     }
     const [values, setValues]=useState(initialFormState)
     // const [values, setValues] = useState({
@@ -50,28 +50,51 @@ export default function EditReview({artists, setArtists, getArtistDetails}) {
     const _updateReviews = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(API_ENDPOINT, {
-                method: 'PUT',
+            const response = await fetch(`http://localhost:8000/reviews/${reviewId}`,{
+                method: 'PATCH',
                 body: JSON.stringify(values),
                 headers: {
+                    Authorization:`Token ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
                 },
             });
             if (response.status === 201) {
-                getArtistDetails();
-                setArtists(setValues)
+                getArtistsDetail();
+                setValues(initialFormState)
                 history.goBack();
             } else {
-                alert('Oooopppps.');
+                alert('Oooopppps. You\'re not the one who wrote it');
             }
         } catch (err) {
             console.log(err);
         }
     }
+    const _handleDelete = async () => {
+        if (window.confirm('You sure you to deleted this review of the artist?')) {
+            try {
+                const deletedReview = await fetch(API_ENDPOINT, {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization:`Token ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (deletedReview.status === 204) {
+                    getArtistsDetail();
+                    history.goBack('/')
+                } else {
+                    alert('One moment please while, we fix this issue.');
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        return;
+    }
 
     return (
         <>
-            <Button  small variant="primary" onClick={handleShow}>
+            <Button variant="primary" onClick={handleShow}>
             Edit review
             </Button>
             <Modal
@@ -93,6 +116,8 @@ export default function EditReview({artists, setArtists, getArtistDetails}) {
                         <Form.Group className="mb-3" controlId="body">
                             <Form.Label>Your review:</Form.Label>
                             <Form.Control type="text" placeholder="title"value={values.body}onChange={_handleChange} required as="textarea" rows={4} />
+                            <Button type='submit'>Edit</Button>
+                            <Button  onClick={() => _handleDelete()}type='submit'>Delete</Button>
                         </Form.Group>
                     </Form>
 
@@ -101,8 +126,8 @@ export default function EditReview({artists, setArtists, getArtistDetails}) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button type='submit'>Edit</Button>
-                    <Button type='submit'>Edit</Button>
+                    
+                    
                 </Modal.Footer>
             </Modal>
         </>
