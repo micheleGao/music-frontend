@@ -61,9 +61,7 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
             if (response.status === 201) {
                 getArtistsDetail();
                 setValues(initialFormState)
-                history.goBack();
-            } else {
-                alert('Oooopppps. You\'re not the one who wrote it');
+                history.goBack('/');
             }
         } catch (err) {
             console.log(err);
@@ -72,11 +70,11 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
     const _handleDelete = async () => {
         if (window.confirm('You sure you to deleted this review of the artist?')) {
             try {
-                const deletedReview = await fetch(API_ENDPOINT, {
+                const deletedReview = await fetch(`http://localhost:8000/reviews/${reviewId}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization:`Token ${localStorage.getItem('token')}`,
-                        'Content-Type': 'application/json',
+                        // 'Content-Type': 'application/json',
                     },
                 });
                 if (deletedReview.status === 204) {
@@ -133,30 +131,3 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
         </>
     );
 }
-
-        // <form onSubmit={_updateReviews}>
-        //     <div>
-        //         <label htmlFor="title">Title</label>
-        //         <input
-        //             type="text"
-        //             id="title"
-        //             value={values.title}
-        //             onChange={_handleChange}
-        //             required
-        //         />
-        //     </div>
-        //     <div>
-        //         <label htmlFor='body'>Body</label>
-        //         <input
-        //             type='text'
-        //             id='body'
-        //             value={values.body}
-        //             onChange={_handleChange}
-        //             required
-        //         />
-        //     </div>
-        //     <input type='submit' value='update Review' />
-        // </form>
-
-//     )
-// }

@@ -41,20 +41,12 @@ export default function Artists({ userInfo, loggedIn }) {
 									to={`artists/${artist.id}`}
 									style={{ color: 'black', textDecoration: 'none' }}>
 									<Card>
-										{/* <Card.Img
-											variant='top'
-											src={artist.photo_url}
-										/> */}
-                                        <Image src={artist.photo_url} width="130px" height="160px" roundedCircle />
+                                        <Image className="artist-home"src={artist.photo_url} width="130px" height="160px" roundedCircle />
 
 										<Card.Body>
 											<Card.Title>
                                                 {artist.name}
                                             </Card.Title>
-											<Card.Text>
-                                                {/* <Link>{artist.songs}</Link> */}
-                                                
-											</Card.Text>
 										</Card.Body>
 									</Card>
 								</Link>

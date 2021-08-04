@@ -1,13 +1,15 @@
 import React from 'react';
 import { Container, Image } from 'react-bootstrap';
+import monster from '../../Monster2.png';
 const Home = () => {
 	return (
 		<Container className='p-5 border rounded-3 bg-light'>
-			<h1>Lryical!</h1>
 			<Image
+				className="logo-monster"
 				rounded
 				fluid
-				src='https://st.hzcdn.com/simgs/3411b2400464e127_4-7286/home-design.jpg'
+				width="600px"
+				src={monster}
 			/>
 		</Container>
 	);

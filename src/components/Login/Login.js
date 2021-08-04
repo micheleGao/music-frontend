@@ -4,17 +4,22 @@ import { useHistory } from 'react-router';
 import {Form, Button} from 'react-bootstrap';
 
 export default function Login({handleSetLogIn}) {
+    const history = useHistory();
+
     const initialFormData = {
         email: '',
         password: '',
     };
-    const history = useHistory();
+    
     const [formData, setFormData] = useState(initialFormData);
+
     const handleChange = (event) => {
         setFormData((prevState) => {
-            return { ...prevState, [event.target.id]: event.target.value };
+            return { ...prevState, 
+                [event.target.id]: event.target.value };
         });
     };
+
     const _handleLogin = async (event) => {
 		event.preventDefault();
 		console.log('you submitted a form!');

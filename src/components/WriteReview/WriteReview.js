@@ -58,7 +58,7 @@ export default function WriteReview({getArtistsDetail}){
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Write review</Modal.Title>
+                    <Modal.Title>Reviews</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={_createReview}>
@@ -68,7 +68,7 @@ export default function WriteReview({getArtistsDetail}){
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="body">
                             <Form.Label>Your review:</Form.Label>
-                            <Form.Control type="text" placeholder="title"value={values.body}onChange={(e)=>_handleChange(e)}
+                            <Form.Control type="text" placeholder="review"value={values.body}onChange={(e)=>_handleChange(e)}
                                 required as="textarea" rows={4} />
                             <Button type='submit'>Post</Button>
                         </Form.Group>

@@ -16,7 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn]= useState(localStorage.getItem('token') ? true : false);
   const [userInfo, setUserInfo] = useState(null);
   const [songs, setSong] =useState([]);
-  const [reviews, setReviews]=useState([]);
+  
   const handleLogout = async()=>{
     try{
       const response = await fetch('http://localhost:8000/token/logout', {
@@ -44,7 +44,7 @@ function App() {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch('http://localhost:8000/users/', {
+      const response = await fetch('http://localhost:8000/users/me/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
         },
