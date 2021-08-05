@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 
+
 body {
   margin: 0;
   font-family: 'PT Mono', monospace, sans-serif !important;
@@ -12,9 +13,9 @@ code {
  
 }
 
- .player-wrapper {
+.player-wrapper {
   position: relative;
-  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+  padding-top: 30.25% /* Player ratio: 100 / (1280 / 720) */
 } 
 
 /* .react-player {
@@ -27,10 +28,16 @@ code {
 @keyframes spin {
   from {
     transform: rotate(0deg);
+    
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(270deg);  
   }
+  0% {border-color: transparent; left:200px; right:100px;top:0px;}
+  25%  {border-color:transparent;left:500px; right:100px;top:200px;}
+  50%  {border-color:transparent;left:500px; bottom:50px;}
+  75%  {border-color:transparent;left:100px; right: 30px;top:500px;}
+  100% {border-color:transparent;right:200px; bottom:500px;}
 }
 
 @keyframes move {
@@ -39,33 +46,68 @@ code {
   }
   to {
     transform: rotate(360deg);
+    transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1)
   }
-  0%   {background-color:red; left:0px; top:0px;}
-  25%  {background-color:yellow; left:20px; top:0px;}
-  50%  {background-color:blue; left:20px; top:20px;}
-  75%  {background-color:green; left:0px; top:20px;}
-  100% {background-color:red; left:0px; top:0px;}
+  0%   {background-color:lightblue; left:0px; top:0px;}
+  25%  {background-color:navajowhite; left:20px; top:0px;}
+  50%  {background-color:lawngreen; left:20px; top:20px;}
+  75%  {background-color:purple; left:0px; top:20px;}
+  100% {background-color:blue; left:0px; top:0px;}
+}
+@keyframes swirl {
+  0%   {left:10px; bottom:10px;}
+  10%  { left:400px; right:30px;}
+  25%  { left:200px; bottom:60px;}
+  40% { right:5px; top:10px;}
+  50%  {right:20px; left:50px;}
+  75%  { left:900px; right:0px;}
+  100% { right:90px; bottom:90px;}
+}
+@keyframes fuzzy {
+  0%   {right:100px; bottom:10px;}
+  25%  { right:200px;left:400px;}
+  50%  {left:200px; bottom:50px;}
+  75%  { right:10px; bottom:500px;}
+  100% { left:5000px; top:10px;}
+}
+@keyframes fuzzy2 {
+  0%   {top:0px; bottom:10px;}
+  5%   { bottom:0px; right:50px;}
+  10% {right:10px; bottom:50px;}
+  25%  { bottom:20px;left:40px;}
+  35%  { top:0px; bottom:50px;}
+  50%  {right:200px;right:50px;}
+  65% { bottom:5000px; left:10px;}
+  75%  { top:0px; bottom:500px;}
+  100% { bottom:500px; left:10px;}
+}
+
+@keyframes side {
+  0%   {left:100px; bottom:10px;}
+  25%  { left:200px;right:400px;}
+  50%  {left:200px; bottom:50px;}
+  75%  { right:10px; bottom:5000px;}
+  100% { left:5000px; top:10px;}
 }
 
 .logo-monster{
-  position: relative;
-  background-color: red;
+  position:relative;
   animation-name: spin;
-  animation-duration: 4s;
+  animation-duration: 9s;
+  margin-top: 10rem;
+  
 }
 
-img {
-  border-radius: 80%;
-}
-
-.monster{
-  width: 100px;
-  height: 100px;
-  border-radius: 90%;
+.nav-monster{
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
   position: relative;
-  background-color: red;
+  background-color: lightpink;
   animation-name: move;
   animation-duration: 4s;
+  padding:5px;
+  
 }
 
 .artist-home:hover{
@@ -90,4 +132,102 @@ img {
   align-items: center;
   margin-top: 0rem;
   margin-bottom:10rem;
+}
+/* .homepage-container{
+  background-image:url('https://docs.google.com/document/d/e/2PACX-1vT7Xw3EuVYZ7QGmZjIgo86mdP01eaWGkmYxTOnlwBXSb0nqEKGqqIo87mtgcjGDsZS0V8PAAulsRINv/pub') !important ;
+} */
+.spinning-logo{
+  width:200px;
+  height:200px;
+  border-radius:100%;
+  animation-name: move;
+  animation: move infinite 20s;
+  animation-play-state: running;
+  animation-direction: alternate;
+  background-color: transparent;
+}
+.home-background{
+  background-image:url('https://docs.google.com/drawings/d/e/2PACX-1vR4qnVReE-53xwx1XvjU9g2SVSkMFujahiyAEI4PRR6njJmbOaU8dZK__HiK9vaL2bMmDM_YTpXCrPY/pub?w=1234&h=728');
+  width:90rem;
+  height:40rem;
+  margin-left: 6rem;
+  margin-top: 2rem;
+}
+.jiggy-spinner{
+  width:100px;
+  height:100px;
+}
+
+/* .jiggy-logo{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  position: relative;
+  animation-name: swirl;
+  animation: swirl infinite 20s;
+  animation-duration: 4s;
+} */
+.fuzzy-logo{
+  border-radius: 90%;
+  position:relative;
+  width: 200px;
+  height: 200px;
+  animation-name: fuzzy;
+  animation-duration: 4s;
+  justify-items: start;
+  animation: fuzzy infinite 20s;
+  animation-fill-mode: backwards;
+}
+.music-logo{
+  border-radius: 90%;
+  width: 200px;
+  height: 200px;
+  animation-name:move;
+  justify-items:last baseline;
+  animation:move infinite 20s;
+  opacity:1;
+  position:absolute;
+  margin-left:50rem;
+  margin-top: 30rem;
+}
+
+/* .fuzzy-logo2{
+  border-radius: 90%;
+  position:relative;
+  width: 200px;
+  height: 200px;
+  animation-name: fuzzy2;
+  animation-duration: 4s;
+  justify-items: start;
+  animation: fuzzy2 infinite 90s;
+  animation-fill-mode: forwards;
+} */
+/* 
+@media only screen and (max-width: 1800px) {
+    .music-logo{
+    border-radius: 90%;
+    width: 200px;
+    height: 200px;
+    animation-name:move;
+    justify-items:last baseline;
+    animation:move infinite 20s;
+    opacity:1;
+    position:absolute;
+    margin-left:6rem;
+    margin-top: 9rem;
+  }
+} */
+@media only screen and (min-width:200px) {
+  .music-logo{
+    border-radius: 90%;
+    width: 50px;
+    height: 50px;
+    animation-name:move;
+    justify-items:last baseline;
+    animation:move infinite 20s;
+    opacity:1;
+    position:absolute;
+    margin-left:350px;
+    margin-top: 250px;
+  }
 }

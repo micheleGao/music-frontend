@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import monster from '../../monster.png';
+import monster from '../../littlemonster.png';
+
 const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
     return (
         <Navbar bg='light' expand='lg' collapseOnSelect={true}>
             <Container>
                 <LinkContainer to='/'>
-                    <Navbar.Brand className="monster"><img src={monster} width="90px"/></Navbar.Brand>
+                    <Navbar.Brand className="nav-color" ><img className="nav-monster"src={monster}/></Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>

@@ -65,7 +65,6 @@ function App() {
   return (
     <div className="App">
       <Navigation loggedIn={loggedIn} handleLogout={handleLogout} userInfo={userInfo}/>
-      Hello!!!
       <Container>
         <Switch>
           <Route path='/login' render={() => <Login handleSetLogIn={handleSetLogIn} />} />
@@ -88,18 +87,6 @@ function App() {
               <ArtistsSongs song={songs} setSong={setSong}/>
             )}
           />
-           {/* <Route
-            path='/reviews'
-            render={() => (
-              <ArtistsReviews reviews={reviews} setReviews={setReviews}/>
-            )}
-          /> */}
-           {/* <Route
-            path='/reviews/:id/edit'
-            render={() => (
-              <EditReview />
-            )}
-          /> */}
         </Switch>
       </Container>
     </div>

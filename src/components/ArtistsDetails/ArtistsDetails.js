@@ -41,8 +41,6 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 				<small>{artists.nationality}</small>
 			</div>
 			<Image
-				// rounded
-				// fluid
 				src={artists.photo_url}
 				roundedCircle
 				width="250px"
@@ -72,38 +70,6 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 					</Accordion.Body>
 				</Accordion.Item>
 			</Accordion>
-			{/* <Container>
-				<>
-					<Button className="press-me" variant="primary" onClick={handleShow}>
-						Reviews
-					</Button>
-
-					<Offcanvas show={show} onHide={handleClose}>
-						<Offcanvas.Header closeButton>
-							<Offcanvas.Title>Reviews</Offcanvas.Title>
-						</Offcanvas.Header>
-						<Offcanvas.Body>
-							<WriteReview _updateReviews={_updateReviews} _handleChange={_handleChange} getArtistsDetail={getArtistsDetail} />
-							{!artists.reviews.length && <p>No reviews just yet</p>}
-							{loggedIn && <p></p>}
-							{artists.reviews.length > 0 &&
-								artists.reviews.map((review) => {
-									return (
-										<Container
-											className='p-5 border rounded-3 bg-light'
-											key={review.id}>
-											<h1>{review.title}</h1>
-											<small>{review.body}</small>
-											<EditReview _handleChange={_handleChange} reviewId={review.id} _updateReviews={_updateReviews} getArtistsDetail={getArtistsDetail} _handleDelete={_handleDelete} />
-										</Container>
-
-									);
-								})}
-
-						</Offcanvas.Body>
-					</Offcanvas>
-				</>
-			</Container> */}
 			<Container>
 				<>
 					<Button className="press-me" variant="primary" onClick={handleShow}>
@@ -115,7 +81,7 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 							<Offcanvas.Title>Songs</Offcanvas.Title>
 						</Offcanvas.Header>
 						<Offcanvas.Body>
-							<h2>Songs</h2>
+							<h2>{artists.name}'s Songs</h2>
 							{!artists.songs.length && <p>No songs just yet</p>}
 							{artists.songs.length > 0 &&
 								artists.songs.map((song) => {

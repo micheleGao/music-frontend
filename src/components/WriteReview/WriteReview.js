@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 
 export default function WriteReview({getArtistsDetail}){
+    const history = useHistory();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -42,6 +44,8 @@ export default function WriteReview({getArtistsDetail}){
             getArtistsDetail();
 			console.log(response);
             setValues(initialFormValues)
+            handleClose();
+            history.goBack('/');
 		}
     
     }
@@ -49,7 +53,7 @@ export default function WriteReview({getArtistsDetail}){
     return(
         <>
             <Button variant="primary" onClick={handleShow}>
-            Write Review
+            Write Review 💌
             </Button>
             <Modal
                 show={show}
@@ -70,7 +74,7 @@ export default function WriteReview({getArtistsDetail}){
                             <Form.Label>Your review:</Form.Label>
                             <Form.Control type="text" placeholder="review"value={values.body}onChange={(e)=>_handleChange(e)}
                                 required as="textarea" rows={4} />
-                            <Button type='submit'>Post</Button>
+                            <Button type='submit'>💌 Post</Button>
                         </Form.Group>
                     </Form>
 

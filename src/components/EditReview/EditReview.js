@@ -58,24 +58,25 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
                 getArtistsDetail();
                 setValues(initialFormState)
                 history.goBack('/');
+                handleClose();
             }
         } catch (err) {
             console.log(err);
         }
     }
-    const _handleDelete = async () => {
+    const _handleDelete = async (reviewId) => {
         if (window.confirm('You sure you to deleted this review of the artist?')) {
             try {
                 const deletedReview = await fetch(`http://localhost:8000/reviews/${reviewId}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization:`Token ${localStorage.getItem('token')}`,
-                        // 'Content-Type': 'application/json',
                     },
                 });
                 if (deletedReview.status === 204) {
                     getArtistsDetail();
-                    history.goBack('/')
+                    history.goBack('/');
+                    
                 } else {
                     alert('One moment please while, we fix this issue.');
                 }
@@ -89,7 +90,7 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
     return (
         <>
             <Button className="edit-review"variant="primary" onClick={handleShow}>
-            Edit review
+            Edit review 🖊️
             </Button>
             <Modal
                 show={show}
@@ -110,11 +111,11 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
                         <Form.Group className="mb-3" controlId="body">
                             <Form.Label>Your review:</Form.Label>
                             <Form.Control type="text" placeholder="title"value={values.body}onChange={_handleChange} required as="textarea" rows={4} />
-                            <Button type='submit'>Edit</Button>
-                            <Button  onClick={() => _handleDelete()}type='submit'>Delete</Button>
                         </Form.Group>
+                            <Button type='submit'> 💌 Save</Button>
+                            <Button  onClick={(e) => _handleDelete(reviewId)} > ❌ Delete</Button>
                     </Form>
-
+                    {/* type='submit' */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
