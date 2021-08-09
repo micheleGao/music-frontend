@@ -11,7 +11,7 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, showF
 	const { id } = useParams()
 	const getSongDetail = async () => {
 		try {
-			const response = await fetch(`http://localhost:8000/songs`);
+			const response = await fetch(`https://music-end-drf.herokuapp.com/songs`);
 			const data = await response.json();
 			console.log(data);
 			if (response.status === 200) {
@@ -25,8 +25,6 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, showF
 		getSongDetail();
 	}, []);
 
-	// let musics = Object.keys(songs).sort(function(a, b){return songs[a]-songs[b];});
-	// console.log(musics)
 
 	return (
 		<div>

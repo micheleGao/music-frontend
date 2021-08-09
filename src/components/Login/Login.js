@@ -24,7 +24,7 @@ export default function Login({handleSetLogIn}) {
 		event.preventDefault();
 		console.log('you submitted a form!');
 		try {
-			const response = await fetch('http://localhost:8000/token/login', {
+			const response = await fetch('https://music-end-drf.herokuapp.com/token/login', {
                 method:'POST',
                 body: JSON.stringify(formData),
                 headers: {

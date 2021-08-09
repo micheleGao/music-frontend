@@ -29,7 +29,7 @@ export default function Signup() {
     const _handleSignup = async (event) => {
         event.preventDefault();
         try{
-            const response = await fetch ('http://localhost:8000/users/', {
+            const response = await fetch ('https://music-end-drf.herokuapp.com/users/', {
                 method:'POST',
                 body: JSON.stringify(formData),
                 headers:{
@@ -43,9 +43,8 @@ export default function Signup() {
                     history.push('/login');
                 }, 3000);
             }else {
-                // get more helpful error data and write logic accordingly
 				const data = await response.json();
-                // setError(true);
+                setError(true);
 				setErrorStr(data.password[0]);
 				console.log(data);
 			}

@@ -9,7 +9,7 @@ export default function Artists({ userInfo, loggedIn }) {
     const { id } = useParams()
     const getArtistsIndex = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/artists/`);
+            const response = await fetch(`https://music-end-drf.herokuapp.com/artists/`);
             const data = await response.json();
             console.log(data);
             if (response.status === 200) {
@@ -28,7 +28,7 @@ export default function Artists({ userInfo, loggedIn }) {
     if (artists.length <= 0) {
         return "loading..."
     }
-    
+
     return (
         <Container>
             <h1>Artists</h1>

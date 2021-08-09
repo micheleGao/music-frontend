@@ -16,7 +16,7 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 	const { id } = useParams()
 	const getArtistsDetail = async () => {
 		try {
-			const response = await fetch(`http://localhost:8000/artists/${id}`);
+			const response = await fetch(`https://music-end-drf.herokuapp.com/artists/${id}`);
 			const data = await response.json();
 			console.log(data);
 			if (response.status === 200) {

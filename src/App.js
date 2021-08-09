@@ -17,7 +17,7 @@ function App() {
   
   const handleLogout = async()=>{
     try{
-      const response = await fetch('http://localhost:8000/token/logout', {
+      const response = await fetch('https://music-end-drf.herokuapp.com/token/logout', {
         method :'POST',
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ function App() {
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch('http://localhost:8000/users/me/', {
+      const response = await fetch('https://music-end-drf.herokuapp.com/users/me/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
         },

@@ -31,7 +31,7 @@ export default function WriteReview({getArtistsDetail}){
     const _createReview = async (e) => {
 		e.preventDefault();
 		console.log('you submitted a review!!!!');
-		const API_ENDPOINT = `http://localhost:8000/reviews/`;
+		const API_ENDPOINT = `https://music-end-drf.herokuapp.com/reviews/`;
 		const response = await fetch(API_ENDPOINT, {
 			method: 'POST',
 			body: JSON.stringify(values),
@@ -88,20 +88,3 @@ export default function WriteReview({getArtistsDetail}){
         </>
     );
 }
-        // <form onSubmit={_createReview}>
-        //     <div>
-        //         <label htmlFor="title">Title</label>
-        //         <input type="text" id="title" value={values.title} required 
-        //         onChange={(e)=>_handleChange(e)}/>
-        //     </div>
-        //     <div>
-        //         <label htmlFor="url">URL</label>
-        //         <input type="text" id="url" value={values.body} required 
-        //         onChange={(e)=>_handleChange(e)}/>
-        //     </div>
-
-        //     <input type="submit" value="create Review"/>
-        // </form>
-
-//     )
-// }

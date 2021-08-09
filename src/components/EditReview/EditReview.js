@@ -66,7 +66,7 @@ export default function EditReview({getArtistsDetail, reviewId}) {
     const _handleDelete = async (reviewId) => {
         if (window.confirm('You sure you to deleted this review of the artist?')) {
             try {
-                const deletedReview = await fetch(`http://localhost:8000/reviews/${reviewId}`, {
+                const deletedReview = await fetch(`https://music-end-drf.herokuapp.com/reviews/${reviewId}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization:`Token ${localStorage.getItem('token')}`,
