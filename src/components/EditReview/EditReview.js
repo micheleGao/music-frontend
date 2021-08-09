@@ -40,7 +40,6 @@ export default function EditReview({getArtistsDetail, reviewId}) {
     };
     useEffect(() => {
         getReviews();
-
     }, []);
 
     const _updateReviews = async (e) => {

@@ -30,7 +30,6 @@ export default function WriteReview({getArtistsDetail}){
     }
     const _createReview = async (e) => {
 		e.preventDefault();
-		console.log('you submitted a review!!!!');
 		const API_ENDPOINT = `https://music-end-drf.herokuapp.com/reviews/`;
 		const response = await fetch(API_ENDPOINT, {
 			method: 'POST',
@@ -42,7 +41,6 @@ export default function WriteReview({getArtistsDetail}){
 		});
 		if (response.status === 201) {
             getArtistsDetail();
-			console.log(response);
             setValues(initialFormValues)
             handleClose();
             history.goBack('/');
