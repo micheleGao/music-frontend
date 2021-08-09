@@ -9,8 +9,6 @@ import Navigation from './components/Navigation/Navigation.js';
 import Artists from './components/Artists/Artists';
 import ArtistsDetails from './components/ArtistsDetails/ArtistsDetails';
 import ArtistsSongs from './components/ArtistsSongs/ArtistsSongs';
-import ArtistsReviews from './components/ArtistsReviews/ArtistsReviews';
-import EditReview from './components/EditReview/EditReview';
 
 function App() {
   const [loggedIn, setLoggedIn]= useState(localStorage.getItem('token') ? true : false);

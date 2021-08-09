@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap';
 
 
-export default function EditReview({artists, setArtists, getArtistsDetail, reviewId}) {
+export default function EditReview({getArtistsDetail, reviewId}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -54,10 +54,9 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
                     'Content-Type': 'application/json',
                 },
             });
-            if (response.status === 201) {
+            if (response.status === 200) {
                 getArtistsDetail();
-                setValues(initialFormState)
-                history.goBack('/');
+                setValues(initialFormState);
                 handleClose();
             }
         } catch (err) {
@@ -115,7 +114,6 @@ export default function EditReview({artists, setArtists, getArtistsDetail, revie
                             <Button type='submit'> 💌 Save</Button>
                             <Button  onClick={(e) => _handleDelete(reviewId)} > ❌ Delete</Button>
                     </Form>
-                    {/* type='submit' */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

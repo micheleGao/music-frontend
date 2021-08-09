@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+/* *{
+  border:1px solid red;
 
+} */
 
 body {
   margin: 0;
@@ -183,14 +186,21 @@ code {
   width: 200px;
   height: 200px;
   animation-name:move;
-  justify-items:last baseline;
   animation:move infinite 20s;
   opacity:1;
   position:absolute;
-  margin-left:50rem;
-  margin-top: 30rem;
-}
+  
 
+}
+.parent{
+  position:relative;
+}
+.music-logo-container{
+  position:absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
 /* .fuzzy-logo2{
   border-radius: 90%;
   position:relative;
@@ -217,7 +227,7 @@ code {
     margin-top: 9rem;
   }
 } */
-@media only screen and (min-width:200px) {
+/* @media only screen and (min-width:600px) {
   .music-logo{
     border-radius: 90%;
     width: 50px;
@@ -227,7 +237,8 @@ code {
     animation:move infinite 20s;
     opacity:1;
     position:absolute;
-    margin-left:350px;
-    margin-top: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-}
+} */

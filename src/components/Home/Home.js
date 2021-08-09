@@ -11,13 +11,16 @@ const Home = () => {
 				<p><img className="jiggy-logo" src={jiggylogo} /></p> */}
 				{/* <img className="jiggy-spinner" src={jiggy}/> */}
 				<Container>
-					<div><img className="music-logo" src={music}/></div>
-					<Image
-						rounded
-						fluid
-						src={monster}
-					/>
-					
+					<div className="parent">
+						<div className="music-logo-container">
+							<img className="music-logo" src={music}/>
+						</div>
+						<Image
+							rounded
+							fluid
+							src={monster}
+						/>
+					</div>
 				</Container>
 		</Container>
 

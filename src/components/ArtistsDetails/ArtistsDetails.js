@@ -28,6 +28,7 @@ export default function ArtistsDetails({ userInfo, loggedIn, _handleChange, _upd
 	};
 	useEffect(() => {
 		getArtistsDetail();
+		
 	}, []);
 
 	if (!artists) {
