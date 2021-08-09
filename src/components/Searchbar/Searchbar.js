@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import{Link} from 'react-router-dom';
-export default function Searchbar({ artists, songs }) {
+export default function Searchbar({songs }) {
 
     const [search, setSearch] = useState("");
     const [filteredSong, setFilteredSong] = useState(songs);
@@ -20,7 +20,6 @@ export default function Searchbar({ artists, songs }) {
         setFilteredSong(songs.filter(song => {
             return song.title.toLowerCase().includes(search.toLowerCase())
         }))
-        console.log('hey from the handle search')
         setSearch("")
     }
     return (
@@ -31,7 +30,7 @@ export default function Searchbar({ artists, songs }) {
             {!showFilteredSong
 					? songs && songs.map((song, index) => {
 						return (
-							<div className="TP" key={index}>
+							<div className="filtered-song" key={index}>
 
 								<Link to={`/artists/${song.artist_id}`}> 
 									<div className="songs">
@@ -48,13 +47,12 @@ export default function Searchbar({ artists, songs }) {
 					})
 					: filteredSong.map((song, index) => {
                         return (
-							<div className="TP" key={index}>
+							<div className="filtered-song" key={index}>
 
 								<Link to={`/artists/${song.artist_id}`}>
 									<div className="song">
 										<h2>{song.title}</h2>
 									</div>
-
 								</Link>
 
 							</div>

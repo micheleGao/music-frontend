@@ -22,9 +22,6 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
                         <LinkContainer to='/songs'>
                             <Nav.Link>Songs</Nav.Link>
                         </LinkContainer>
-                        {/* <LinkContainer to='/reviews'>
-                            <Nav.Link>Reviews</Nav.Link>
-                        </LinkContainer> */}
                     </Nav>
                     <Nav>
                         {userInfo && (
