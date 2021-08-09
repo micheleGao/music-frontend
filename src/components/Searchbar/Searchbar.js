@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import{Link} from 'react-router-dom';
-export default function Searchbar({songs }) {
+
+export default function Searchbar({songs}) {
 
     const [search, setSearch] = useState("");
     const [filteredSong, setFilteredSong] = useState(songs);

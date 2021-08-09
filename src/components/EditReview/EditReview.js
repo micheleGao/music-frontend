@@ -12,7 +12,7 @@ export default function EditReview({getArtistsDetail, reviewId}) {
     const history = useHistory();
     const { id } = useParams();
     
-    const API_ENDPOINT = `http://localhost:8000/reviews/${reviewId}`;
+    const API_ENDPOINT = `https://music-end-drf.herokuapp.com/reviews/${reviewId}`;
 
     const initialFormState = {
         title: "",
@@ -46,7 +46,7 @@ export default function EditReview({getArtistsDetail, reviewId}) {
     const _updateReviews = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8000/reviews/${reviewId}`,{
+            const response = await fetch(`https://music-end-drf.herokuapp.com/reviews/${reviewId}`,{
                 method: 'PATCH',
                 body: JSON.stringify(values),
                 headers: {
