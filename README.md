@@ -12,6 +12,10 @@ To have an application of all my favorite songs, and videos in one place, and be
 ## A better look at the application
 <img width="1260" alt="Screen Shot 2021-08-10 at 10 30 47 AM" src="https://user-images.githubusercontent.com/72947727/128896378-fd5b5fce-1935-45d5-b6a2-0988f4dedb00.png">
 
+![Uploading Screen Shot 2021-08-10 at 10.17.17 AM.png…]()
+<img width="760" alt="Screen Shot 2021-08-10 at 10 17 00 AM" src="https://user-images.githubusercontent.com/72947727/128897148-4c03d0e2-a2b4-4e6f-99eb-179c58af34d1.png">
+<img width="606" alt="Screen Shot 2021-08-10 at 10 31 01 AM" src="https://user-images.githubusercontent.com/72947727/128897170-7e39caa1-e93e-4bc4-9e7d-f7f5c0f1cd57.png">
+
 
 
 ## My MVP Goals
