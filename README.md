@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# (Getting Jiggy) Music Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application for all music lovers. 
 
-## Available Scripts
+## Description of Getting Jiggy
+A web application where all music lover band together and leave reviews on their available artists, using the API call from Django Rest Framework (Getting Jiggy backend). You can see the videos hosted by react player from youtube. Search for the available songs from the API. Leave a review, edit, or delete them using the given credentials dependent on the user information. 
 
-In the project directory, you can run:
 
-### `yarn start`
+### Inspiration  for the project
+To have an application of all my favorite songs, and videos in one place, and be able to leave a review with full CRUD!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## A better look at the application
+<img width="1260" alt="Screen Shot 2021-08-10 at 10 30 47 AM" src="https://user-images.githubusercontent.com/72947727/128896378-fd5b5fce-1935-45d5-b6a2-0988f4dedb00.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## My MVP Goals
+- Have a fully functional review section where users can CRUD it up!
+- To view all artists available from the API call.
+- To have a song page, where all the songs avialable are displayed.
 
-### `yarn build`
+## Stretch Goals
+- To have a search bar
+- To have just a page of MP3 music for playlists
+- To have songs have their own reviews
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Complications during the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies Used.
+1. JS
+2. React Bootstrap
+3. React Player
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
