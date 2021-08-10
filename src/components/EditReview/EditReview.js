@@ -5,14 +5,14 @@ import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap';
 
 
-export default function EditReview({getArtistsDetail, reviewId}) {
+export default function EditReview({ getArtistsDetail, reviewId}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const history = useHistory();
     const { id } = useParams();
     
-    const API_ENDPOINT = `https://music-end-drf.herokuapp.com/reviews/${reviewId}`;
+    const API_ENDPOINT = `https://music-end-drf.herokuapp.com/reviews/${reviewId}/`;
 
     const initialFormState = {
         title: "",
@@ -108,9 +108,9 @@ export default function EditReview({getArtistsDetail, reviewId}) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="body">
                             <Form.Label>Your review:</Form.Label>
-                            <Form.Control type="text" placeholder="title"value={values.body}onChange={_handleChange} required as="textarea" rows={4} />
+                            <Form.Control type="text" placeholder="body" value={values.body}onChange={_handleChange} required as="textarea" rows={4} />
                         </Form.Group>
-                            <Button type='submit'> 💌 Save</Button>
+                            <Button type='submit' onClick={handleClose}> 💌 Save</Button>
                             <Button  onClick={(e) => _handleDelete(reviewId)} > ❌ Delete</Button>
                     </Form>
                 </Modal.Body>
