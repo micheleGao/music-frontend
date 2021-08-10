@@ -110,7 +110,7 @@ export default function EditReview({ getArtistsDetail, reviewId}) {
                             <Form.Label>Your review:</Form.Label>
                             <Form.Control type="text" placeholder="body" value={values.body}onChange={_handleChange} required as="textarea" rows={4} />
                         </Form.Group>
-                            <Button type='submit' onClick={handleClose}> 💌 Save</Button>
+                            <Button type='submit'> 💌 Save</Button>
                             <Button  onClick={(e) => _handleDelete(reviewId)} > ❌ Delete</Button>
                     </Form>
                 </Modal.Body>

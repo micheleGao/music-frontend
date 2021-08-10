@@ -11,7 +11,7 @@ export default function ArtistsSongs({ handleChange, handleSearch, search, showF
 	const { id } = useParams()
 	const getSongDetail = async () => {
 		try {
-			const response = await fetch(`https://music-end-drf.herokuapp.com/songs`);
+			const response = await fetch(`https://music-end-drf.herokuapp.com/songs/`);
 			const data = await response.json();
 			console.log(data);
 			if (response.status === 200) {
